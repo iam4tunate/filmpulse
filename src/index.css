@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: poppins-light;
+    src: url(./assets/fonts/Poppins-Light.woff2);
+  }
+  @font-face {
+    font-family: poppins;
+    src: url(./assets/fonts/Poppins-Regular.woff2);
+  }
+  @font-face {
+    font-family: poppins-medium;
+    src: url(./assets/fonts/Poppins-Medium.woff2);
+  }
+  @font-face {
+    font-family: poppins-bold;
+    src: url(./assets/fonts/Poppins-Bold.woff2);
+  }
+  @font-face {
+    font-family: unica-one;
+    src: url(./assets/fonts/UnicaOne-Regular.woff);
+  }
+
+  body {
+    @apply bg-black font-poppins text-white tracking-wide;
+  }
+}
+
+@layer utilities {
+  .maxW {
+    @apply max-w-screen-xl mx-auto w-full;
+  }
+  .padX {
+    @apply px-12;
+  }
+  .beat {
+    animation: beats 1s infinite;
+    transition: 0.3s;
+  }
+
+  @keyframes beats {
+    0% {
+      transform: scale(1);
+    }
+
+    60% {
+      transform: scale(0.95);
+      box-shadow: 10px 10px 10px #00000070;
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+}
