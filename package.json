@@ -12,12 +12,12 @@
   "dependencies": {
     "@tanstack/react-query": "^5.8.9",
     "@tanstack/react-query-devtools": "^5.8.9",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
     "react-router-dom": "^6.20.0",
-    "swiper": "^11.0.5",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",

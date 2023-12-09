@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { getTopRated } from "../../services/apiCategories";
 
 export function useTopRated() {
-  const { data: topRated } = useQuery({
+  const { isPending: isTopratedPending, data: topRated } = useQuery({
     queryKey: ["topRated"],
     queryFn: getTopRated,
   });
 
-  return { topRated };
+  return { isTopratedPending, topRated };
 }

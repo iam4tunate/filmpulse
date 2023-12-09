@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { getUpcoming } from "../../services/apiCategories";
 
 export function useUpcoming() {
-  const { data: upcoming } = useQuery({
+  const { isPending: isUpcomingPending, data: upcoming } = useQuery({
     queryKey: ["upcoming"],
     queryFn: getUpcoming,
   });
 
-  return { upcoming };
+  return { isUpcomingPending, upcoming };
 }

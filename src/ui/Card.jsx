@@ -1,23 +1,32 @@
-import { IoMdStar } from "react-icons/io";
+import moment from "moment";
 import { IMG_BASE } from "../utils/helpers";
+import { IoMdStar } from "react-icons/io";
+import { Link } from "react-router-dom";
 
-const Card = ({ poster_path, release_date, withText, title }) => {
+const Card = ({
+  id,
+  poster_path,
+  release_date,
+  title,
+  vote_average,
+  withText,
+}) => {
   return (
-    <div className="w-[16rem] cursor-pointer">
-      <figure className="w-[16rem] rounded-md">
+    <div className="w-[17rem] cursor-pointer">
+      <Link to={`/movie/${id}`} className="w-[17rem] h-[25rem] rounded-md">
         <img
           src={IMG_BASE + poster_path}
           alt={title}
-          className="h-full w-full object-cover rounded-md"
+          className="h-full w-full object-cover rounded-md bg-dark"
         />
-      </figure>
+      </Link>
       {withText && (
-        <div className="flex items-center justify-between text-[13px] px-[2px] pt-1.5 font-poppinsLight">
-          <span className="opacity-80">{release_date}</span>
-          <div className="flex items-center gap-x-[2px]">
-            <IoMdStar className="text-yellow text-lg" />
-            <span className="opacity-80">8.1</span>
-          </div>
+        <div className="flex items-center justify-between text-xs font-poppinsLight px-[2px] pt-1.5">
+          <span className="opacity-80">{moment(release_date).fromNow()}</span>
+          <span className="flex items-start text-gray-400 font-poppinsBold">
+            <IoMdStar className="mr-[2px] text-[#ffff00] text-sm" />
+            {vote_average}
+          </span>
         </div>
       )}
     </div>

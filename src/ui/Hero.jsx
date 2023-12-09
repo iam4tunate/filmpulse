@@ -1,8 +1,10 @@
 import BGIMG from "../assets/exploreBg.png";
 import OVERLAY from "../assets/bg-noise.gif";
 import { Link } from "react-router-dom";
+import { useGenreNames } from "../features/genres/useGenreNames";
 
 const Hero = () => {
+  const { genreNames: genres = [] } = useGenreNames();
   const bg = {
     backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,1)),url(${BGIMG})`,
   };
@@ -17,17 +19,21 @@ const Hero = () => {
       />
       <div className="max-w-screen-lg mx-auto padX opacity-90 text-center z-30">
         <div className="text-6xl font-black font-unica">
-          Unlimited movie details, cast bio, and more.
+          Explore our wide variety of genres.
         </div>
         <p className="font-poppinsLight text-lg w-[80%] mx-auto pt-4 pb-6 leading-normal">
-          Get full and detailed movie information coverage with everything you need to know about cast and crew in the movie.
+          Whether you&apos;re looking for details on comedy to make you laugh, a
+          drama to make you think, or a documentary to learn something new,
+          We&apos;ve got you covered.
         </p>
-        <Link
-          to="/genre"
-          className="bg-red px-7 py-3 whitespace-nowrap rounded-md font-poppinsMedium cursor-pointer block w-fit mx-auto"
-        >
-          Explore now
-        </Link>
+        {genres && (
+          <Link
+            to={`/genre/${genres[0]?.id}`}
+            className="bg-red px-7 py-3 whitespace-nowrap rounded-md font-poppinsMedium cursor-pointer block w-fit mx-auto"
+          >
+            Explore now
+          </Link>
+        )}
       </div>
     </div>
   );

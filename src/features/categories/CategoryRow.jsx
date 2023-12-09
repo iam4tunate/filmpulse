@@ -5,8 +5,18 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Card from "../../ui/Card";
+import LoadingCategories from "../../ui/LoadingCategories";
 
-const CategoryRow = ({ title, movies = [], autoplayDuration }) => {
+const CategoryRow = ({
+  title,
+  movies = [],
+  autoplayDuration,
+  isTrending,
+  isNowplaying,
+  isToprated,
+  isPopular,
+  isUpcoming,
+}) => {
   // eslint-disable-next-line no-unused-vars
   const [_, setInit] = useState();
   const [isBegin, setIsBegin] = useState(true);
@@ -14,20 +24,28 @@ const CategoryRow = ({ title, movies = [], autoplayDuration }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
-  if (!movies.length) return null;
+  if (
+    isTrending ||
+    isNowplaying ||
+    isToprated ||
+    isPopular ||
+    isUpcoming ||
+    !movies.length
+  )
+    return <LoadingCategories />;
 
   return (
-    <div className="pt-12 pb-12">
-      <div className="maxW padX flex items-center justify-between mb-8">
-        <div className="text-3xl font-unica font-bold after:bg-red after:w-full after:h-[1px] after:block after:mt-1">
+    <div className="pt-12 pb-8 last:pb-20">
+      <div className="maxW padX translate-x-3 flex items-center justify-between mb-8">
+        <div className="text-3xl font-unica font-bold after:bg-red after:opacity-30 after:w-full after:h-[3px] after:block after:mt-1">
           {title}.
         </div>
-        <div className="flex items-center border border-red border-opacity-60 rounded-md py-2 px-1.5 space-x-5">
+        <div className="flex items-center border border-white border-opacity-20 rounded-md py-2 px-1.5 space-x-5">
           <span
             ref={prevRef}
             className={`${
               isBegin && "opacity-20"
-            } py-2 px-3 bg-dark rounded-md cursor-pointer border-[1px] border-white border-opacity-10`}
+            } py-2 px-3 bg-dark rounded-md cursor-pointer border-[1px] border-white border-opacity-5`}
           >
             <IoArrowBackOutline className="text-lg" />
           </span>
@@ -35,7 +53,7 @@ const CategoryRow = ({ title, movies = [], autoplayDuration }) => {
             ref={nextRef}
             className={`${
               isEnd && "opacity-20"
-            } py-2 px-3 bg-dark rounded-md cursor-pointer border-[1px] border-white border-opacity-10`}
+            } py-2 px-3 bg-dark rounded-md cursor-pointer border-[1px] border-white border-opacity-5`}
           >
             <IoArrowForwardOutline className="text-lg" />
           </span>

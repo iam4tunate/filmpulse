@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import BG from "../assets/exploreBg.png";
+import OVERLAY from "../assets/bg-noise.gif";
 
-const Explore = ({ exploreNow }) => {
+const Explore = () => {
   return (
     <div
       style={{
@@ -9,7 +9,11 @@ const Explore = ({ exploreNow }) => {
       }}
       className="w-full bg-cover bg-center bg-no-repeat h-[25rem] flex items-center"
     >
-      <div className="maxW padX flex items-center justify-between">
+      <div
+        style={{ backgroundImage: `url(${OVERLAY})` }}
+        className="absolute top-0 left-0 right-0 bottom-0 opacity-[0.06] z-10 w-full h-[25rem]"
+      />
+      <div className="maxW padX">
         <div className="w-[70%] opacity-90">
           <div className="text-5xl font-black font-unica pb-3">
             Explore our wide variety of genres
@@ -20,14 +24,6 @@ const Explore = ({ exploreNow }) => {
             We&apos;ve got you covered
           </p>
         </div>
-        {exploreNow && (
-          <Link
-            to="/genre"
-            className="bg-red px-10 py-4 whitespace-nowrap rounded-md font-poppinsBold beat cursor-pointer"
-          >
-            Explore now
-          </Link>
-        )}
       </div>
     </div>
   );
