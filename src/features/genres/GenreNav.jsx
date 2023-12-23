@@ -22,10 +22,10 @@ const GenreNav = () => {
   if (isPending) return <LoadingGenreNav />;
 
   return (
-    <div className="maxW padX pb-10 pt-16">
+    <div className="maxW padX pb-10 pt-16 max-md:pt-12">
       <div className="flex items-center gap-x-2">
         <Swiper
-          slidesPerView={3.5}
+          slidesPerView={2}
           spaceBetween={25}
           className="mySwiper"
           onSlideChange={(swiper) => {
@@ -40,22 +40,19 @@ const GenreNav = () => {
           }}
           breakpoints={{
             300: {
-              slidesPerView: 2,
-            },
-            360: {
               slidesPerView: 2.5,
             },
-            430: {
-              slidesPerView: 3,
-            },
-            490: {
+            500: {
               slidesPerView: 3.5,
             },
-            700: {
+            780: {
               slidesPerView: 4.5,
             },
-            970: {
+            920: {
               slidesPerView: 5.5,
+            },
+            1050: {
+              slidesPerView: 6.5,
             },
             1200: {
               slidesPerView: 7.5,
@@ -74,15 +71,15 @@ const GenreNav = () => {
                     id == genre.id
                       ? "bg-dark border-red text-white"
                       : "bg-black  border-white opacity-50"
-                  } border-2   text-center shadow-lg px-6 py-2.5 rounded-md cursor-pointer capitalize font-poppinsLight text-sm`}
+                  } border-2   text-center shadow-lg w-full py-2.5 rounded-md cursor-pointer capitalize font-poppinsLight text-sm`}
                 >
                   {genre.name}
                 </Link>
               </SwiperSlide>
             ))}
-          <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-black z-10" />
+          <div className="absolute top-0 right-0 w-8 max-sm:w-16 h-full bg-gradient-to-l from-black z-10" />
         </Swiper>
-        <div className="w-fit flex items-center border border-white border-opacity-20 rounded-md px-1.5 py-2 space-x-5 z-10 bg-black">
+        <div className="max-sm:hidden w-fit flex items-center border border-white border-opacity-20 rounded-md px-1.5 py-2 space-x-5 z-10 bg-black">
           <span
             ref={prevRef}
             className={`${
@@ -101,7 +98,7 @@ const GenreNav = () => {
           </span>
         </div>
       </div>
-      <div className="text-3xl font-unica font-bold after:bg-red after:w-full after:h-[1px] after:block after:mt-1 w-fit mt-6">
+      <div className="text-3xl max-sm:text-2xl font-unica font-bold after:bg-red after:w-full after:h-[1px] after:block after:mt-1 w-fit mt-6 max-sm:mt-8">
         {item?.name}.
       </div>
     </div>

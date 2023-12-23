@@ -25,7 +25,7 @@
   }
 
   body {
-    @apply bg-black font-poppins text-[#ffffffd2] tracking-wide;
+    @apply bg-black font-poppins text-[#ffffffd2] tracking-wide scroll-smooth scrollbar-hide overflow-x-hidden;
   }
 }
 
@@ -34,31 +34,12 @@
     @apply max-w-screen-xl mx-auto w-full;
   }
   .padX {
-    @apply px-6;
+    @apply px-12 max-xl:px-8 max-md:px-4 max-sm:px-3;
   }
-  /* .beat {
-    animation: beats 1s infinite;
-    transition: 0.3s;
-  }
-
-  @keyframes beats {
-    0% {
-      transform: scale(1);
-    }
-
-    60% {
-      transform: scale(0.95);
-      box-shadow: 10px 10px 10px #00000070;
-    }
-
-    100% {
-      transform: scale(1);
-    }
-  } */
-
+  
   .loading {
     position: relative;
-    background: #0f0f0f;
+    background: #141414;
     border-radius: 6px;
     overflow: hidden;
   }

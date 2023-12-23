@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { getMovieDetails } from "../../services/apiMovies";
+import { getDetails } from "../../services/apiMovies";
 
 export function useDetails() {
   const { id } = useParams();
@@ -10,7 +10,7 @@ export function useDetails() {
     error,
   } = useQuery({
     queryKey: ["details", id],
-    queryFn: () => getMovieDetails(id),
+    queryFn: () => getDetails(id),
   });
 
   return { isPending, details, error };

@@ -35,12 +35,12 @@ const CategoryRow = ({
     return <LoadingCategories />;
 
   return (
-    <div className="pt-12 pb-8 last:pb-20">
-      <div className="maxW padX translate-x-3 flex items-center justify-between mb-8">
-        <div className="text-3xl font-unica font-bold after:bg-red after:opacity-30 after:w-full after:h-[3px] after:block after:mt-1">
+    <div className="pt-12 pb-8 max-md:pt-16 max-md:pb-12 last:pb-32">
+      <div className="padX flex items-center justify-between mb-8">
+        <div className="text-3xl max-sm:text-2xl font-unica font-bold after:bg-red after:opacity-30 after:w-full after:h-[3px] after:block after:mt-1">
           {title}.
         </div>
-        <div className="flex items-center border border-white border-opacity-20 rounded-md py-2 px-1.5 space-x-5">
+        <div className="max-sm:hidden flex items-center border border-white border-opacity-20 rounded-md py-2 px-1.5 space-x-5">
           <span
             ref={prevRef}
             className={`${
@@ -59,10 +59,10 @@ const CategoryRow = ({
           </span>
         </div>
       </div>
-      <div className="max-w-screen-xl ml-auto">
+      <div className="pl-12 max-xl:pl-8 max-md:pl-4">
         <Swiper
-          slidesPerView={4}
-          spaceBetween={15}
+          slidesPerView={1}
+          spaceBetween={10}
           className="mySwiper"
           onSlideChange={(swiper) => {
             setIsBegin(swiper.isBeginning);
@@ -79,9 +79,59 @@ const CategoryRow = ({
             nextEl: nextRef.current,
           }}
           breakpoints={{
-            700: {
+            300: {
+              slidesPerView: 1.1,
+            },
+            460: {
+              slidesPerView: 1.5,
+            },
+            610: {
+              slidesPerView: 2,
+            },
+            640: {
+              slidesPerView: 2.5,
+            },
+            780: {
+              slidesPerView: 3,
+            },
+            900: {
+              slidesPerView: 3.5,
+            },
+            1130: {
+              slidesPerView: 4,
+            },
+            1140: {
               slidesPerView: 4.5,
-              spaceBetween: 6,
+            },
+            1300: {
+              slidesPerView: 5,
+            },
+            1410: {
+              slidesPerView: 5.5,
+            },
+            1540: {
+              slidesPerView: 6,
+            },
+            1670: {
+              slidesPerView: 6.5,
+            },
+            1800: {
+              slidesPerView: 7,
+            },
+            1940: {
+              slidesPerView: 7.5,
+            },
+            2040: {
+              slidesPerView: 8,
+            },
+            2210: {
+              slidesPerView: 8.5,
+            },
+            2320: {
+              slidesPerView: 9,
+            },
+            2450: {
+              slidesPerView: 9.5,
             },
           }}
         >

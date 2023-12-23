@@ -14,12 +14,13 @@ const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
   const [isEnd, setIsEnd] = useState(false);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-  if (!credits.length) return null;
+  if (!credits?.length) return null;
+
   return (
-    <div className="bg-dark px-6 pt-6 pb-2 rounded-md shadow-2xl w-full">
+    <div className="bg-dark px-6 max-md:px-4 max-sm:px-2.5 pt-6 pb-2 rounded-md shadow-2xl w-full">
       <div className="flex items-center justify-between mb-8">
         <div className="pb-2 text-lg font-poppinsBold">{title}</div>
-        <div className="flex items-center border border-red border-opacity-30 rounded-md py-1.5 px-1.5 space-x-5">
+        <div className="max-sm:hidden flex items-center border border-red border-opacity-30 rounded-md py-1.5 px-1.5 space-x-5">
           <span
             ref={prevRef}
             className={`${
@@ -39,8 +40,8 @@ const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
         </div>
       </div>
       <Swiper
-        slidesPerView={4}
-        spaceBetween={20}
+        slidesPerView={1}
+        spaceBetween={10}
         className="mySwiper"
         onSlideChange={(swiper) => {
           setIsBegin(swiper.isBeginning);
@@ -57,25 +58,40 @@ const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
           nextEl: nextRef.current,
         }}
         breakpoints={{
-          700: {
+          310: {
+            slidesPerView: 1.5,
+          },
+          370: {
+            slidesPerView: 2,
+          },
+          460: {
+            slidesPerView: 2.5,
+          },
+          530: {
+            slidesPerView: 3,
+          },
+          660: {
+            slidesPerView: 3.5,
+          },
+          800: {
             slidesPerView: 4,
           },
         }}
       >
         {credits.map((credit) => (
           <SwiperSlide key={credit?.credit_id}>
-            <figure className="bg-blue-50 rounded-md">
+            <figure className="rounded-md">
               {!credit.profile_path ? (
                 <img
                   src={NO_POSTER}
                   alt="poster unavailable"
-                  className="h-[17rem] object-cover rounded-md"
+                  className="mx-auto h-[17rem] w-full object-cover rounded-md"
                 />
               ) : (
                 <img
                   src={IMG_BASE + credit.profile_path}
                   alt={credit.name}
-                  className="rounded-md h-[17rem] object-cover"
+                  className="mx-auto rounded-md h-[17rem] max-[309px]:h-auto w-full object-cover bg-top top-0"
                 />
               )}
             </figure>
@@ -85,8 +101,8 @@ const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
                 credit?.character && (
                   <span className="italic opacity-40 text-xs">
                     {credit?.character.length < 20
-                      ? `(as ${credit?.character.slice(0, 20)})`
-                      : `(as ${credit?.character.slice(0, 20)}...)`}
+                      ? `(as ${credit?.character.slice(0, 17)})`
+                      : `(as ${credit?.character.slice(0, 17)}...)`}
                   </span>
                 )
               ) : (
@@ -99,7 +115,7 @@ const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
         ))}
       </Swiper>
       <div className="text-end pt-6">
-        <p className="text-[10px] italic opacity-60">
+        <p className="text-[10px] italic opacity-40">
           Click on poster to view artist full bio
         </p>
       </div>

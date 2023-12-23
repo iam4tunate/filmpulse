@@ -1,11 +1,22 @@
 import { authOptions, BASE_URL } from "../utils/helpers";
 
-export async function getMovieDetails(id) {
+export async function getDetails(id) {
   const response = await fetch(`${BASE_URL}/movie/${id}`, authOptions);
   if (!response.ok) throw Error("Unable to fetch movies");
   const data = await response.json();
   return data;
 }
+
+export async function getVideos(id) {
+  const response = await fetch(
+    `${BASE_URL}/movie/${id}/videos?language=en-US`,
+    authOptions
+  );
+  if (!response.ok) throw Error("Unable to fetch videos");
+  const { results: videos } = await response.json();
+  return videos;
+}
+
 export async function getCast(id) {
   const response = await fetch(
     `${BASE_URL}/movie/${id}/credits?language=en-US`,
@@ -15,6 +26,7 @@ export async function getCast(id) {
   const { cast } = await response.json();
   return cast;
 }
+
 export async function getCrew(id) {
   const response = await fetch(
     `${BASE_URL}/movie/${id}/credits?language=en-US`,
@@ -24,12 +36,13 @@ export async function getCrew(id) {
   const { crew } = await response.json();
   return crew;
 }
-export async function getSimilar(id) {
+
+export async function getRecommended(id) {
   const response = await fetch(
     `${BASE_URL}/movie/${id}/recommendations?language=en-US&page=1`,
     authOptions
   );
   if (!response.ok) throw Error("Unable to fetch simlar movies");
-  const { results: similar } = await response.json();
-  return similar;
+  const { results: recommended } = await response.json();
+  return recommended;
 }

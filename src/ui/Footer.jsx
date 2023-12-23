@@ -1,14 +1,12 @@
 const Footer = () => {
-  const year = new Date().getFullYear();
   return (
-    <footer className="h-16 w-full flex items-center loading">
-      <div className="maxW padX flex items-center justify-between text-sm">
+    <footer className="h-8 max-sm:h-14 py-2 w-full flex items-center justify-center">
+      <footer className="padX flex max-sm:flex-col items-center justify-end text-xs">
         <span className="">
-          Designed and developer by{" "}
+          Designed and developed by{" "}
           <span className="text-red font-poppinsMedium underline underline-offset-4 pl-1">iamfortunate</span>
         </span>
-        <span>&copy; {year}</span>
-      </div>
+      </footer>
     </footer>
   );
 };

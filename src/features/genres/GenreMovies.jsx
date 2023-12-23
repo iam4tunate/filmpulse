@@ -7,9 +7,9 @@ const GenreMovies = () => {
   if (isPending) return <LoadingVideos />;
 
   return (
-    <div className="maxW padX flex flex-wrap gap-x-12 gap-y-20 justify-center pb-20">
+    <div className="maxW padX flex flex-wrap gap-x-6 gap-y-20 justify-center pb-20">
       {movies &&
-        movies.map((movie) => <Card key={movie.id} {...movie} withText />)}
+        movies.map((movie) => <Card key={movie.id} {...movie} withText cardBg/>)}
     </div>
   );
 };
