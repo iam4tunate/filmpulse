@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { IMG_BASE } from "../../utils/helpers";
 import NO_POSTER from "../../assets/no_poster.jpg";
+import Bio from "./Bio";
 
 const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
   // eslint-disable-next-line no-unused-vars
@@ -15,6 +16,7 @@ const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   if (!credits?.length) return null;
+  console.log(credits);
 
   return (
     <div className="bg-dark px-6 max-md:px-4 max-sm:px-2.5 pt-6 pb-2 rounded-md shadow-2xl w-full">

@@ -46,3 +46,13 @@ export async function getRecommended(id) {
   const { results: recommended } = await response.json();
   return recommended;
 }
+
+export async function getBio(id) {
+  const response = await fetch(
+    `${BASE_URL}/person/${id}?language=en-US`,
+    authOptions
+  );
+  if (!response.ok) throw Error("Unable to fetch data");
+  const bio = await response.json();
+  return bio;
+}
