@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { IMG_BASE } from "../../utils/helpers";
 import NO_POSTER from "../../assets/no_poster.jpg";
-import Bio from "./Bio";
+// import Bio from "./Bio";
 
 const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
   // eslint-disable-next-line no-unused-vars
@@ -16,7 +16,7 @@ const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   if (!credits?.length) return null;
-  console.log(credits);
+  // console.log(credits);
 
   return (
     <div className="bg-dark px-6 max-md:px-4 max-sm:px-2.5 pt-6 pb-2 rounded-md shadow-2xl w-full">
@@ -116,11 +116,11 @@ const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="text-end pt-6">
+      {/* <div className="text-end pt-6">
         <p className="text-[10px] italic opacity-40">
           Click on poster to view artist full bio
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };

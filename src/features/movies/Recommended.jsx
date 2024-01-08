@@ -9,21 +9,28 @@ import { useRecommended } from "./useRecommended";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import { useSimilar } from "./useSimilar";
 
 const Recommended = () => {
   const { recommended } = useRecommended();
+  const { similar } = useSimilar();
+  const movies = recommended?.length === 0 ? similar : recommended;
+  console.log(similar)
+
   // eslint-disable-next-line no-unused-vars
   const [_, setInit] = useState();
   const [isBegin, setIsBegin] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-  if (!recommended?.length) return null;
+  if (!recommended?.length && !similar?.length) return null;
 
   return (
-    <div className="bg-dark py-6 px-6 max-md:px-4 max-sm:px-2.5 rounded-md shadow-2xl max-w-6xl max-[1100px]:max-w-4xl mx-auto mb-16">
+    <div className="bg-dark py-6 px-6 max-md:px-4 max-sm:px-2.5 rounded-md shadow-2xl max-w-6xl max-[1100px]:max-w-4xl mx-auto mb-10">
       <div className="flex items-center justify-between mb-8">
-        <div className="pb-2 text-lg font-poppinsBold">Recommended</div>
+        <div className="pb-2 text-lg font-poppinsBold">
+          {!Recommended.length ? "Similar" : "Recommended"}
+        </div>
         <div className="max-sm:hidden flex items-center border border-red border-opacity-30 rounded-md py-1.5 px-1.5 space-x-5">
           <span
             ref={prevRef}
@@ -88,13 +95,11 @@ const Recommended = () => {
           },
         }}
       >
-        {recommended &&
-          // recommended.slice(0, 2).map((movie) => (
-          recommended.map((movie) => (
-            <SwiperSlide key={movie.id} className="rounded-md">
-              <Card {...movie} cardBg withText/>
-            </SwiperSlide>
-          ))}
+        {movies?.map((movie) => (
+          <SwiperSlide key={movie.id} className="rounded-md">
+            <Card {...movie} withText />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

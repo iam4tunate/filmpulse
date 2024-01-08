@@ -17,59 +17,53 @@ const CategoryRow = () => {
           slidesPerView={1}
           spaceBetween={25}
           breakpoints={{
-            310: {
+            300: {
               slidesPerView: 1.2,
             },
             460: {
-              slidesPerView: 1.5,
+              slidesPerView: 1.8,
             },
-            610: {
-              slidesPerView: 2,
+            580: {
+              slidesPerView: 2.2,
             },
-            640: {
-              slidesPerView: 2.5,
+            715: {
+              slidesPerView: 2.6,
             },
-            780: {
-              slidesPerView: 3,
+            890: {
+              slidesPerView: 3.2,
             },
-            900: {
+            1000: {
               slidesPerView: 3.5,
             },
-            1130: {
-              slidesPerView: 4,
-            },
-            1140: {
-              slidesPerView: 4.5,
-            },
-            1300: {
-              slidesPerView: 5,
+            1160: {
+              slidesPerView: 4.2,
             },
             1410: {
-              slidesPerView: 5.5,
+              slidesPerView: 4.5,
             },
             1540: {
-              slidesPerView: 6,
+              slidesPerView: 5.2,
             },
             1670: {
-              slidesPerView: 6.5,
+              slidesPerView: 5.5,
             },
             1800: {
-              slidesPerView: 7,
+              slidesPerView: 6.2,
             },
             1940: {
-              slidesPerView: 7.5,
+              slidesPerView: 6.5,
             },
             2040: {
-              slidesPerView: 8,
+              slidesPerView: 7.2,
             },
             2210: {
-              slidesPerView: 8.5,
+              slidesPerView: 7.5,
             },
             2320: {
-              slidesPerView: 9,
+              slidesPerView: 8.2,
             },
             2450: {
-              slidesPerView: 9.5,
+              slidesPerView: 8.5,
             },
           }}
         >

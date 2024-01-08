@@ -20,31 +20,31 @@ const Home = () => {
       <CategoryRow
         title="Trending"
         movies={trending}
-        autoplayDuration={2000}
+        autoplayDuration={3000}
         isTrending={isTrendingPending}
       />
       <CategoryRow
         title="Popular"
         movies={popular}
-        autoplayDuration={2500}
+        autoplayDuration={3500}
         isPopular={isPopularPending}
       />
       <CategoryRow
         title="Upcoming"
         movies={upcoming}
-        autoplayDuration={2300}
+        autoplayDuration={4000}
         isUpcoming={isUpcomingPending}
       />
       <CategoryRow
         title="Top Rated"
         movies={topRated}
-        autoplayDuration={2500}
+        autoplayDuration={4500}
         isToprated={isTopratedPending}
       />
       <CategoryRow
         title="Now Playing"
         movies={nowPlaying}
-        autoplayDuration={2000}
+        autoplayDuration={5000}
         isNowplaying={isNowplayingPending}
       />
     </AppLayout>

@@ -47,6 +47,16 @@ export async function getRecommended(id) {
   return recommended;
 }
 
+export async function getSimilar(id) {
+  const response = await fetch(
+    `${BASE_URL}/movie/${id}/similar?language=en-US&page=1`,
+    authOptions
+  );
+  if (!response.ok) throw Error("Unable to fetch simlar movies");
+  const { results: similar } = await response.json();
+  return similar;
+}
+
 export async function getBio(id) {
   const response = await fetch(
     `${BASE_URL}/person/${id}?language=en-US`,

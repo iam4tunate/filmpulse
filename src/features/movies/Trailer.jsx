@@ -10,7 +10,7 @@ const Trailer = () => {
       <div className="pb-4 text-lg font-poppinsBold">Trailer</div>
       <ReactPlayer
         url={`https://www.youtube.com/watch?v=${trailer?.key}`}
-        // light={true}
+        light={true}
         muted={true}
         controls={true}
         width="100%"

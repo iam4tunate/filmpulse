@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Genre from "./features/genres/Genre";
 import Details from "./features/movies/Details";
 import Home from "./ui/Home";
+import ScrollToTop from "./ui/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -12,12 +13,14 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/genre/:id" element={<Genre />} />
-          <Route path="/movie/:id" element={<Details />} />
-          <Route path="/movie/:id" element={<Details />} />
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/genre/:id" element={<Genre />} />
+            <Route path="/movie/:id" element={<Details />} />
+            <Route path="/movie/:id" element={<Details />} />
+          </Routes>
+        </ScrollToTop>
       </BrowserRouter>
     </QueryClientProvider>
   );

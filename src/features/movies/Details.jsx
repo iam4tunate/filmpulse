@@ -19,9 +19,9 @@ const Details = () => {
     return (
       <div
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,1)),url(${BGIMG})`,
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,1)),url(${BGIMG})`,
         }}
-        className="blur-[2px] bg-cover bg-center bg-no-repeat w-full h-screen"
+        className="blur-[1.5px] bg-cover bg-center bg-no-repeat w-full h-screen"
       />
     );
 

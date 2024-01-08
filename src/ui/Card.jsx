@@ -11,10 +11,9 @@ const Card = ({
   title,
   vote_average,
   withText,
-  cardBg,
 }) => {
   return (
-    <div className={`${cardBg ? "w-[17rem]" : "w-[15rem]"}`}>
+    <div className="w-[17rem] max-sm:w-full flex flex-col justify-end">
       <Link
         to={`/movie/${id}`}
         className={`h-[25rem] max-sm:h-[27rem] cursor-pointer mx-auto`}

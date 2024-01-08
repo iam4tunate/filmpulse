@@ -3,11 +3,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5";
 import { useGenreNames } from "./useGenreNames";
-import { Link, useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 import LoadingGenreNav from "../../ui/LoadingGenreNav";
 
 const GenreNav = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { isPending, genreNames: genres } = useGenreNames();
 
   // eslint-disable-next-line no-unused-vars
@@ -61,20 +62,17 @@ const GenreNav = () => {
         >
           {genres &&
             genres.map((genre) => (
-              <SwiperSlide
-                key={genre.id}
-                className="my-auto flex justify-center items-center"
-              >
-                <Link
-                  to={`/genre/${genre.id}`}
+              <SwiperSlide key={genre.id} className="!w-fit">
+                <div
+                  onClick={() => navigate(`/genre/${genre.id}`)}
                   className={`${
                     id == genre.id
                       ? "bg-dark border-red text-white"
                       : "bg-black  border-white opacity-50"
-                  } border-2   text-center shadow-lg w-full py-2.5 rounded-md cursor-pointer capitalize font-poppinsLight text-sm`}
+                  } border-2   text-center shadow-lg w-full py-2 px-2 rounded-md cursor-pointer capitalize font-poppinsLight text-sm`}
                 >
                   {genre.name}
-                </Link>
+                </div>
               </SwiperSlide>
             ))}
           <div className="absolute top-0 right-0 w-8 max-sm:w-16 h-full bg-gradient-to-l from-black z-10" />
