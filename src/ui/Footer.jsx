@@ -1,11 +1,18 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <footer className="h-8 max-sm:h-14 py-2 w-full flex items-center justify-center">
+    <footer className="pb-4 w-full flex items-center justify-center">
       <footer className="padX flex max-sm:flex-col items-center justify-end text-xs">
-        <span className="">
-          Designed and developed by{" "}
-          <span className="text-red font-poppinsMedium underline underline-offset-4 pl-1">iamfortunate</span>
-        </span>
+        <span className="">Designed & developed by</span>
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          to="https://iamfortunate.netlify.app/"
+          className="text-red font-poppinsMedium underline underline-offset-4 pl-1"
+        >
+          iamfortunate
+        </Link>
       </footer>
     </footer>
   );

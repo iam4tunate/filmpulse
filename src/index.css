@@ -36,7 +36,7 @@
   .padX {
     @apply px-12 max-xl:px-8 max-md:px-4 max-sm:px-3;
   }
-  
+
   .loading {
     position: relative;
     background: #141414;

@@ -13,11 +13,8 @@ const Card = ({
   withText,
 }) => {
   return (
-    <div className="w-[17rem] max-sm:w-full flex flex-col justify-end">
-      <Link
-        to={`/movie/${id}`}
-        className={`h-[25rem] max-sm:h-[27rem] cursor-pointer mx-auto`}
-      >
+    <div className="w-[17rem] max-sm:w-fit flex flex-col justify-end truncate ...">
+      <Link to={`/movie/${id}`} className={`h-full cursor-pointer mx-auto`}>
         {!poster_path ? (
           <img
             src={NO_POSTER}
@@ -33,14 +30,19 @@ const Card = ({
         )}
       </Link>
       {withText && (
-        <div className="flex items-center justify-between text-xs px-0.5 pt-1.5 font-poppinsMedium">
-          <span className="text-gray-400">
-            {moment(release_date).fromNow()}
-          </span>
-          <span className="flex items-start text-gray-400">
-            <IoMdStar className="mr-[2px] text-[#ffff00] text-sm" />
-            {vote_average.toFixed(1)}
-          </span>
+        <div className="px-0.5 pt-1.5 font-poppinsMedium">
+          <div className="pb-2 truncate ...">
+            {title}
+          </div>
+          <div className="flex items-center justify-between text-xs">
+            <span className="text-gray-400">
+              {moment(release_date).fromNow()}
+            </span>
+            <span className="flex items-start text-gray-400">
+              <IoMdStar className="mr-[2px] text-[#ffff00] text-sm" />
+              {vote_average.toFixed(1)}
+            </span>
+          </div>
         </div>
       )}
     </div>

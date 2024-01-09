@@ -1,14 +1,16 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5";
 import { useGenreNames } from "./useGenreNames";
-import {useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import LoadingGenreNav from "../../ui/LoadingGenreNav";
+import DataContext from "../../context/DataContext";
 
 const GenreNav = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { setPage } = useContext(DataContext);
   const { isPending, genreNames: genres } = useGenreNames();
 
   // eslint-disable-next-line no-unused-vars
@@ -64,7 +66,10 @@ const GenreNav = () => {
             genres.map((genre) => (
               <SwiperSlide key={genre.id} className="!w-fit">
                 <div
-                  onClick={() => navigate(`/genre/${genre.id}`)}
+                  onClick={() => {
+                    setPage(1);
+                    navigate(`/genre/${genre.id}`);
+                  }}
                   className={`${
                     id == genre.id
                       ? "bg-dark border-red text-white"
