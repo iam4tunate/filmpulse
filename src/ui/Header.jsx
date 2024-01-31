@@ -9,7 +9,7 @@ const Header = () => {
         <Link to="/">
           <IoPulseSharp className="text-4xl text-white" />
         </Link>
-        <IoIosSearch className="text-2xl" />
+        {/* <IoIosSearch className="text-2xl" /> */}
       </div>
     </header>
   );
