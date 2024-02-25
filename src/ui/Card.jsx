@@ -31,7 +31,7 @@ const Card = ({
       </Link>
       {withText && (
         <div className="px-0.5 pt-1.5 font-poppinsMedium">
-          <div className="pb-2 truncate ...">
+          <div className="pb-1 truncate ...">
             {title}
           </div>
           <div className="flex items-center justify-between text-xs">

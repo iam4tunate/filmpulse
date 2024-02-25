@@ -15,7 +15,6 @@ const Recommended = () => {
   const { recommended } = useRecommended();
   const { similar } = useSimilar();
   const movies = recommended?.length === 0 ? similar : recommended;
-  console.log(similar)
 
   // eslint-disable-next-line no-unused-vars
   const [_, setInit] = useState();

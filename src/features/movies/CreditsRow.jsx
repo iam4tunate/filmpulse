@@ -1,22 +1,29 @@
 import { useRef, useState } from "react";
 import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { IMG_BASE } from "../../utils/helpers";
 import NO_POSTER from "../../assets/no_poster.jpg";
-// import Bio from "./Bio";
+import { useData } from "../../context/DataContext";
 
-const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
+const CreditsRow = ({ credits = [], title, cast }) => {
   // eslint-disable-next-line no-unused-vars
   const [_, setInit] = useState();
   const [isBegin, setIsBegin] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const { setPersonId } = useData();
+  const { setBio } = useData();
+
+  function handleClick(id) {
+    setPersonId(id);
+    setBio(true);
+  }
+
   if (!credits?.length) return null;
-  // console.log(credits);
 
   return (
     <div className="bg-dark px-6 max-md:px-4 max-sm:px-2.5 pt-6 pb-2 rounded-md shadow-2xl w-full">
@@ -49,11 +56,7 @@ const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
           setIsBegin(swiper.isBeginning);
           setIsEnd(swiper.isEnd);
         }}
-        autoplay={{
-          delay: autoplayDuration,
-          disableOnInteraction: false,
-        }}
-        modules={[Navigation, Autoplay]}
+        modules={[Navigation]}
         onInit={() => setInit(true)}
         navigation={{
           prevEl: prevRef.current,
@@ -61,19 +64,19 @@ const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
         }}
         breakpoints={{
           310: {
-            slidesPerView: 1.5,
+            slidesPerView: 1.4,
           },
           370: {
             slidesPerView: 2,
           },
           460: {
-            slidesPerView: 2.5,
+            slidesPerView: 2.4,
           },
           530: {
             slidesPerView: 3,
           },
           660: {
-            slidesPerView: 3.5,
+            slidesPerView: 3.4,
           },
           800: {
             slidesPerView: 4,
@@ -82,18 +85,21 @@ const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
       >
         {credits.map((credit) => (
           <SwiperSlide key={credit?.credit_id}>
-            <figure className="rounded-md">
+            <figure
+              className="rounded-md"
+              onClick={() => handleClick(credit.id)}
+            >
               {!credit.profile_path ? (
                 <img
                   src={NO_POSTER}
                   alt="poster unavailable"
-                  className="mx-auto h-[17rem] w-full object-cover rounded-md"
+                  className="mx-auto h-[20rem] w-full object-cover rounded-md cursor-pointer"
                 />
               ) : (
                 <img
                   src={IMG_BASE + credit.profile_path}
                   alt={credit.name}
-                  className="mx-auto rounded-md h-[17rem] max-[309px]:h-auto w-full object-cover bg-top top-0"
+                  className="mx-auto rounded-md h-[20rem] max-[309px]:h-auto w-full object-cover bg-top cursor-pointer"
                 />
               )}
             </figure>
@@ -116,11 +122,11 @@ const CreditsRow = ({ credits = [], autoplayDuration, title, cast }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      {/* <div className="text-end pt-6">
+      <div className="text-end pt-6">
         <p className="text-[10px] italic opacity-40">
           Click on poster to view artist full bio
         </p>
-      </div> */}
+      </div>
     </div>
   );
 };

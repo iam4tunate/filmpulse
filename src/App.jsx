@@ -6,6 +6,7 @@ import Genre from "./features/genres/Genre";
 import Details from "./features/movies/Details";
 import Home from "./ui/Home";
 import ScrollToTop from "./ui/ScrollToTop";
+import Search from "./features/movies/Search";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => {
               <Route path="/genre/:id" element={<Genre />} />
               <Route path="/movie/:id" element={<Details />} />
               <Route path="/movie/:id" element={<Details />} />
+              <Route path="/search" element={<Search />} />
             </Routes>
           </ScrollToTop>
         </BrowserRouter>

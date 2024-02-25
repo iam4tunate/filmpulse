@@ -66,3 +66,13 @@ export async function getBio(id) {
   const bio = await response.json();
   return bio;
 }
+
+export async function searchMovie(searchQuery) {
+  const response = await fetch(
+    `${BASE_URL}/search/movie?query=${searchQuery}&language=en-US&sort_by=popularity.desc&page=1`,
+    authOptions
+  );
+  if (!response.ok) throw Error("Unable to fetch data");
+  const { results } = await response.json();
+  return results;
+}

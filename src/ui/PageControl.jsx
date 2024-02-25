@@ -1,11 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { Link } from "react-scroll";
-import DataContext from "../context/DataContext";
+import { useData } from "../context/DataContext";
 import { useGenreMovies } from "../features/genres/useGenreMovies";
 
 const PageControl = () => {
-  const { page, setPage } = useContext(DataContext);
+  const { page, setPage } = useData();
   const { movies } = useGenreMovies();
   useEffect(() => {
     localStorage.setItem("page", JSON.stringify(page));

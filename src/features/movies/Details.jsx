@@ -8,25 +8,21 @@ import CreditsRow from "./CreditsRow";
 import Recommended from "./Recommended";
 import { useDetails } from "./useDetails";
 import AppLayout from "../../ui/AppLayout";
-import BGIMG from "../../assets/exploreBg.jpg";
 import OVERLAY from "../../assets/bg-noise.gif";
+import LoadingPage from "../../ui/LoadingPage";
+import Bio from "./Bio";
+import { useData } from "../../context/DataContext";
 
 const Details = () => {
   const { details } = useDetails();
   const { cast } = useCast();
   const { crew } = useCrew();
-  if (!details)
-    return (
-      <div
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,1)),url(${BGIMG})`,
-        }}
-        className="blur-[1.5px] bg-cover bg-center bg-no-repeat w-full h-screen"
-      />
-    );
+  const { isBio } = useData();
 
+  if (!details) return <LoadingPage />;
   return (
     <AppLayout>
+      {isBio && <Bio />}
       <div
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,1)),url(${
@@ -39,7 +35,7 @@ const Details = () => {
           style={{ backgroundImage: `url(${OVERLAY})` }}
           className="absolute top-0 left-0 right-0 bottom-0 opacity-[0.06] z-10 w-full h-[35rem]"
         />
-        <div className="max-w-screen-lg mx-auto padX opacity-90 text-center z-30 flex flex-col items-center">
+        <div className="max-w-screen-lg mx-auto padX opacity-90 text-center z-20 flex flex-col items-center">
           <div className="text-6xl max-lg:text-5xl max-md:text-4xl font-black font-unica">
             {details?.title}
           </div>
@@ -80,13 +76,8 @@ const Details = () => {
             <div className="hidden max-[1100px]:block">
               <Aside details={details} />
             </div>
-            <CreditsRow
-              credits={cast}
-              autoplayDuration={3000}
-              title="Cast"
-              cast
-            />
-            <CreditsRow credits={crew} autoplayDuration={3500} title="Crew" />
+            <CreditsRow credits={cast} title="Cast" cast />
+            <CreditsRow credits={crew} title="Crew" />
           </div>
 
           <div className="max-[1100px]:hidden">

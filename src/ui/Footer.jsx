@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="pb-4 w-full flex items-center justify-center">
-      <footer className="padX flex max-sm:flex-col items-center justify-end text-xs">
+      <footer className="padX flex flex-wrap items-center justify-end text-xs">
         <span className="">Designed & developed by</span>
         <Link
           target="_blank"

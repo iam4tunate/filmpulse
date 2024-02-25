@@ -10,7 +10,6 @@ import { calcMovieRuntime, formatNumber } from "../../utils/helpers";
 import Trailer from "./Trailer";
 
 const Aside = ({ details }) => {
-  console.log(details);
   const { quotient, remainder } = calcMovieRuntime(details?.runtime, 60);
   return (
     <div className="h-fit bg-dark py-8 rounded-md shadow-2xl font-poppinsLight text-sm">
@@ -41,9 +40,9 @@ const Aside = ({ details }) => {
             </div>
           )}
         </div>
-        {(details?.budget > 0 || details?.revenue > 0) && (
+        {(details?.budget !== 0 || details?.revenue !== 0) && (
           <div className="flex items-start gap-x-16">
-            {details?.budget > 0 && (
+            {details?.budget !== 0 && (
               <div className="">
                 <div className="pb-2 opacity-40 flex items-center gap-x-2">
                   <BiDollarCircle />
@@ -57,7 +56,7 @@ const Aside = ({ details }) => {
                 </span>
               </div>
             )}
-            {details?.revenue > 0 && (
+            {details?.revenue !== 0 && (
               <div className="">
                 <div className="pb-2 opacity-40 flex items-center gap-x-2">
                   <IoMdTrendingUp />
