@@ -38,7 +38,7 @@ const Search = () => {
             value={initialQuery || searchQuery}
             onChange={handleChange}
             placeholder="Enter at least 3 characters to search..."
-            className="border-b-2 border-b-white border-opacity-80 w-[80%] focus:border-b-red focus:w-full transition-all duration-150 ease-in-out outline-none bg-transparent text-2xl max-lg:text-xl max-md:text-base max-sm:text-sm tracking-wide px-1"
+            className="border-b-2 border-b-white border-opacity-80 w-[80%] max-md:w-full focus:border-b-red focus:w-full transition-all duration-150 ease-in-out outline-none bg-transparent text-2xl max-lg:text-xl max-md:text-base max-sm:text-sm tracking-wide px-1"
           />
           <span
             onClick={handleClearInput}
