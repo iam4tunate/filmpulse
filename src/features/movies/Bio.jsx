@@ -8,7 +8,6 @@ import moment from "moment";
 const Bio = () => {
   const { isPending, bio } = useBio();
   const { setBio } = useData();
-  console.log(bio);
 
   return (
     <div className="padX fixed top-0 right-0 left-0 bottom-0 z-50 bg-dark bg-opacity-90 min-h-screen flex items-center justify-center">

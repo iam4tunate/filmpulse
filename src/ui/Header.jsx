@@ -7,6 +7,7 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { pathname } = location;
+
   return (
     <header className="py-3 fixed w-full bg-dark bg-opacity-10 backdrop-blur-md z-50 border-b border-b-white border-opacity-10">
       <div className="maxW padX flex items-center justify-between">

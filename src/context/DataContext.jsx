@@ -5,9 +5,11 @@ const DataContext = createContext();
 const DataProvider = ({ children }) => {
   const initialVal = JSON.parse(localStorage.getItem("page"));
   const [page, setPage] = useState(initialVal || 1);
-  const [searchQuery, setSearchQuery] = useState("");
   const [personId, setPersonId] = useState(null);
   const [isBio, setBio] = useState(false);
+
+  const initialQuery = localStorage.getItem("searchQuery");
+  const [searchQuery, setSearchQuery] = useState(initialQuery || "");
 
   return (
     <DataContext.Provider
